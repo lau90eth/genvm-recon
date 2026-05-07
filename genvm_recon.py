@@ -13,11 +13,17 @@ from pathlib import Path
 from checks.storage_annotations import check_storage_annotations
 from checks.runner_id import check_runner_id
 from checks.nondet_pattern import check_nondet_pattern
+from checks.self_in_nondet import check_self_in_nondet
+from checks.constructor_arg_types import check_constructor_arg_types
+from checks.import_style import check_import_style
 
 CHECKS = [
     check_runner_id,
     check_storage_annotations,
     check_nondet_pattern,
+    check_self_in_nondet,
+    check_constructor_arg_types,
+    check_import_style,
 ]
 
 SEVERITY_ORDER = {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3, "INFO": 4}
