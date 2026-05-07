@@ -3,18 +3,22 @@
 Static analyzer for GenLayer Intelligent Contracts.
 
 Detects common issues that cause deployment failures and runtime errors
-on GenLayer Bradbury Testnet — based on hands-on experience.
+on GenLayer Bradbury Testnet — based on hands-on experience deploying
+4 contracts on Bradbury Phase 1.
 
 ## Checks
 
 | Check                    | Severity     | Description |
-|--------------------------|--------------|-----------|
+|--------------------------|--------------|-------------|
 | `runner_id`              | HIGH/CRITICAL| Invalid or missing runner ID |
 | `storage_annotations`    | CRITICAL     | Missing class-level type annotations — state not persisted |
 | `nondet_pattern`         | CRITICAL     | exec_prompt called directly in write method |
 | `self_in_nondet`         | CRITICAL     | self.* accessed inside leader_fn/validator_fn |
-| `constructor_arg_types`  | HIGH         | Unsupported types in storage (int, list, dict, float) |
 | `import_style`           | CRITICAL     | import genlayer as gl instead of from genlayer import * |
+| `constructor_arg_types`  | HIGH         | Unsupported types in storage (int, list, dict, float) |
+| `nondet_result_unused`   | HIGH         | gl.vm.run_nondet_unsafe() result not assigned to storage |
+| `missing_return_type`    | MEDIUM       | Missing return type on public methods — breaks schema introspection |
+| `dead_write_method`      | LOW          | @gl.public.write never modifies storage — use @gl.public.view |
 
 ## Usage
 
