@@ -16,6 +16,9 @@ from checks.nondet_pattern import check_nondet_pattern
 from checks.self_in_nondet import check_self_in_nondet
 from checks.constructor_arg_types import check_constructor_arg_types
 from checks.import_style import check_import_style
+from checks.missing_return_type import check_missing_return_type
+from checks.dead_write_method import check_dead_write_method
+from checks.nondet_result_unused import check_nondet_result_unused
 
 CHECKS = [
     check_runner_id,
@@ -24,6 +27,9 @@ CHECKS = [
     check_self_in_nondet,
     check_constructor_arg_types,
     check_import_style,
+    check_missing_return_type,
+    check_dead_write_method,
+    check_nondet_result_unused,
 ]
 
 SEVERITY_ORDER = {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3, "INFO": 4}
